@@ -10,6 +10,15 @@ class StateInfo:
             "\n    Total Tests :    " + str(self.total_tested) + \
             "\n    Negative Cases : " + str(self.negative_results) + \
             "\n    Positive Cases : " + str(self.positive_results)
-    
 
+# idk why, but re does not handle all cases of numbers 
+# with commas. this function is a fallback
+def strip_commas(input_str):
 
+    output_str = ''
+
+    for c in input_str:
+        if ord(c) >= ord('0') and ord(c) <= ord('9'):
+            output_str = output_str + c # i hate this... so much
+
+    return output_str

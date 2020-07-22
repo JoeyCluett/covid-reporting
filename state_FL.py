@@ -11,11 +11,12 @@ def state_FL(web_accessor):
     tag_pos = web_accessor.chrome.find_element_by_id(id_='tested-positive-stat')
     tag_neg = web_accessor.chrome.find_element_by_id(id_='tested-negative-stat')
 
-    cases_neg = int(re.sub('[^\d]+', '', str(tag_neg.text)))
-    cases_pos = int(re.sub('[^\d]+', '', str(tag_pos.text)))
+    cases_neg = int(strip_commas(tag_neg.text))
+    cases_pos = int(strip_commas(tag_pos.text))
 
     return StateInfo('FL', cases_pos + cases_neg, cases_neg, cases_pos)
-    #return StateInfo('FL', -1, -1, -1)
+
+
 
     # failed earlier attempts
 
