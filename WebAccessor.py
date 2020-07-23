@@ -4,7 +4,7 @@ import os
 
 from state_ND import *
 from state_IL import *
-#from state_AZ import *
+from state_AZ import *
 from state_MN import *
 from state_FL import *
 
@@ -27,5 +27,6 @@ class WebAccessor():
         elif state_abbr == 'IL': return state_IL(self)
         elif state_abbr == 'MN': return state_MN(self)
         elif state_abbr == 'FL': return state_FL(self)
+        elif state_abbr == 'AZ': return state_AZ(self)
         else:
             return StateInfo(state_abbr, -1, -1, -1)

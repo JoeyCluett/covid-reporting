@@ -3,12 +3,17 @@ import sys
 from WebAccessor import *
 web_accessor = WebAccessor()
 
+from state_AZ import *
+
+state_AZ(web_accessor)
+
 try:
     info_list = [
         web_accessor.get_info_by_state('ND'), # use state abbreviation
         web_accessor.get_info_by_state('IL'),
         web_accessor.get_info_by_state('MN'),
         web_accessor.get_info_by_state('FL'),
+        web_accessor.get_info_by_state('AZ'),
     ]
 except Exception:
     web_accessor.chrome.quit() # cant let this guy keep going
