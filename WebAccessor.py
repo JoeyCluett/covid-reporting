@@ -24,10 +24,13 @@ class WebAccessor():
 
     def get_info_by_state(self, state_abbr):
 
-        if   state_abbr == 'ND': return state_ND(self)
-        elif state_abbr == 'IL': return state_IL(self)
-        elif state_abbr == 'MN': return state_MN(self)
-        elif state_abbr == 'FL': return state_FL(self)
-        elif state_abbr == 'AZ': return state_AZ(self)
-        else:
+        try:
+            if   state_abbr == 'ND': return state_ND(self)
+            elif state_abbr == 'IL': return state_IL(self)
+            elif state_abbr == 'MN': return state_MN(self)
+            elif state_abbr == 'FL': return state_FL(self)
+            elif state_abbr == 'AZ': return state_AZ(self)
+            else:
+                return StateInfo(state_abbr, -1, -1, -1)
+        except Exception:
             return StateInfo(state_abbr, -1, -1, -1)

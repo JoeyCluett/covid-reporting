@@ -13,7 +13,7 @@ class StateInfo:
 
 def generate_html_table(info_list):
 
-    f = open('table.html', 'w+')
+    f = open('index.html', 'w+')
 
     _ = f.write('<!DOCTYPE html><html><head>')
     _ = f.write('<title>COVID-19 Testing Results</title>')
@@ -32,7 +32,11 @@ def generate_html_table(info_list):
 
         _ = f.write('</tr>')
 
-    _ = f.write('</table></body></html>')
+    _ = f.write('</table>')
+
+    _ = f.write('<br>this site does not use cookies or store any kind of user data whatsoever. happy trails.')
+
+    _ = f.write('</body></html>')
 
     f.close()
 
