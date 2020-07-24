@@ -7,6 +7,8 @@ import re
 
 def state_MN(web_accessor):
 
+    print('MN...', end='', flush=True)
+
     r = req.get('https://www.health.state.mn.us/diseases/coronavirus/situation.html')
     pg = BeautifulSoup(r.text, 'lxml')
 
@@ -22,5 +24,7 @@ def state_MN(web_accessor):
     for tag in item.next_siblings:
         total_tests = int(re.sub('[^\d]+', '', str(tag)))
         break # only want first iteration
+
+    print('DONE', flush=True)
 
     return StateInfo('MN', total_tests, total_tests - pos_case_nums, pos_case_nums)

@@ -23,6 +23,7 @@ class WebAccessor():
         self.chrome = CHROME_DRIVER
 
     def get_info_by_state(self, state_abbr):
+
         if   state_abbr == 'ND': return state_ND(self)
         elif state_abbr == 'IL': return state_IL(self)
         elif state_abbr == 'MN': return state_MN(self)

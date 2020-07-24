@@ -3,10 +3,6 @@ import sys
 from WebAccessor import *
 web_accessor = WebAccessor()
 
-from state_AZ import *
-
-state_AZ(web_accessor)
-
 try:
     info_list = [
         web_accessor.get_info_by_state('ND'), # use state abbreviation
@@ -24,10 +20,11 @@ def sort_key(o):
 info_list = sorted(info_list, key=sort_key)
 
 
-print('State   Tests      Positive   Negative')
+print('\nState   Tests      Positive   Negative')
 for i in info_list:
     print('%s      %-10d %-10d %-10d' % ( i.state_name, i.total_tested, i.positive_results, i.negative_results ))
 
+generate_html_table(info_list)
 
 # destroy the running background Chrome instance.
 # for some reason, this is not done automagically

@@ -7,12 +7,16 @@ import re
 
 def state_FL(web_accessor):
 
+    print('FL...', end='', flush=True)
+
     web_accessor.chrome.get('https://floridahealthcovid19.gov/')
     tag_pos = web_accessor.chrome.find_element_by_id(id_='tested-positive-stat')
     tag_neg = web_accessor.chrome.find_element_by_id(id_='tested-negative-stat')
 
     cases_neg = int(strip_commas(tag_neg.text))
     cases_pos = int(strip_commas(tag_pos.text))
+
+    print('DONE', flush=True)
 
     return StateInfo('FL', cases_pos + cases_neg, cases_neg, cases_pos)
 

@@ -11,6 +11,31 @@ class StateInfo:
             "\n    Negative Cases : " + str(self.negative_results) + \
             "\n    Positive Cases : " + str(self.positive_results)
 
+def generate_html_table(info_list):
+
+    f = open('table.html', 'w+')
+
+    _ = f.write('<!DOCTYPE html><html><head>')
+    _ = f.write('<title>COVID-19 Testing Results</title>')
+    _ = f.write('<style>table, th, td { border: 1px solid black; border-collapse:collapse; }</style>')
+    _ = f.write('</head><body>')
+
+
+    _ = f.write('<table>')
+    _ = f.write('<tr><th>State</th><th>Total Tests</th><th>Positive Cases</th><th>Negative Cases</th></tr>')
+
+    for info in info_list:
+        _ = f.write('<tr>')
+
+        _ = f.write('<td>%s</td><td>%d</td><td>%d</td><td>%d</td>' % ( \
+            info.state_name, info.total_tested, info.positive_results, info.negative_results ))
+
+        _ = f.write('</tr>')
+
+    _ = f.write('</table></body></html>')
+
+    f.close()
+
 # idk why, but re does not handle all cases of numbers 
 # with commas. this function is a fallback
 def strip_commas(input_str):

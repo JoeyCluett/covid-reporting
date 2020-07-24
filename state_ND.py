@@ -6,6 +6,8 @@ from info import *
 
 def state_ND(web_accessor_unused):
 
+    print('ND...', end='', flush=True)
+
     r = req.get('https://www.health.nd.gov/diseases-conditions/coronavirus/north-dakota-coronavirus-cases')
     pg = BeautifulSoup(r.text, 'lxml')
 
@@ -31,6 +33,8 @@ def state_ND(web_accessor_unused):
         if tag.name == 'h2':
             total_test_nums = int(tag.get_text())
             break
+
+    print('DONE', flush=True)
 
     return StateInfo("ND", total_test_nums, neg_case_nums, pos_case_nums)
 

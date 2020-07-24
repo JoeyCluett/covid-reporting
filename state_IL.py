@@ -5,6 +5,8 @@ import re
 
 def state_IL(web_accessor):
 
+    print('IL...', end='', flush=True)
+
     web_accessor.chrome.get('https://dph.illinois.gov/covid19')
 
     t = web_accessor.chrome.find_element_by_id(id_='covid19positive')
@@ -14,6 +16,8 @@ def state_IL(web_accessor):
 
     t = web_accessor.chrome.find_element_by_id(id_='covid19totaltest')
     total_tests = int(re.sub('[^\d]+', '', t.text))
+
+    print('DONE', flush=True)
 
     return StateInfo('IL', total_tests, total_tests-positive_cases, positive_cases)
 
